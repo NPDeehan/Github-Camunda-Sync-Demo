@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="e8643d7" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0" camunda:diagramRelationId="cb8bdabb-1ce6-4cff-b57a-11451b3de0b1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.26.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0" camunda:diagramRelationId="cb8bdabb-1ce6-4cff-b57a-11451b3de0b1">
   <bpmn:process id="ElegibilityCheck" name="Elegibility Check" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Check if Use is Eligible for an Upgrade">
       <bpmn:extensionElements>
@@ -32,6 +32,7 @@
       <bpmn:incoming>Flow_1muoors</bpmn:incoming>
       <bpmn:outgoing>Flow_16y7t8m</bpmn:outgoing>
       <bpmn:outgoing>Flow_066qbp7</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0bve4lf</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_066qbp7" sourceRef="Gateway_028qcjd" targetRef="Activity_0nr4y51" />
     <bpmn:endEvent id="Event_1oatjs4">
@@ -42,6 +43,15 @@
       <bpmn:incoming>Flow_066qbp7</bpmn:incoming>
       <bpmn:outgoing>Flow_0odxv19</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0bve4lf" sourceRef="Gateway_028qcjd" targetRef="Activity_0p20n9p" />
+    <bpmn:endEvent id="Event_1vx4z8k">
+      <bpmn:incoming>Flow_1kjpbkl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1kjpbkl" sourceRef="Activity_0p20n9p" targetRef="Event_1vx4z8k" />
+    <bpmn:userTask id="Activity_0p20n9p" name="Other Stuff">
+      <bpmn:incoming>Flow_0bve4lf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kjpbkl</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ElegibilityCheck">
@@ -51,15 +61,15 @@
           <dc:Bounds x="130" y="143" width="77" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0l36ibj_di" bpmnElement="Activity_0a902d2">
-        <dc:Bounds x="240" y="78" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1ii9y1k_di" bpmnElement="Event_1ii9y1k">
         <dc:Bounds x="672" y="100" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="654" y="143" width="73" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0l36ibj_di" bpmnElement="Activity_0a902d2">
+        <dc:Bounds x="240" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0tvmxee_di" bpmnElement="Activity_0gpn7eb">
         <dc:Bounds x="530" y="78" width="100" height="80" />
@@ -74,6 +84,12 @@
       <bpmndi:BPMNShape id="Activity_17jfdbg_di" bpmnElement="Activity_0nr4y51">
         <dc:Bounds x="530" y="190" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vx4z8k_di" bpmnElement="Event_1vx4z8k">
+        <dc:Bounds x="712" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0u3mmqg_di" bpmnElement="Activity_0p20n9p">
+        <dc:Bounds x="530" y="300" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0fwl5kf_di" bpmnElement="Flow_0fwl5kf">
         <di:waypoint x="186" y="118" />
@@ -99,6 +115,15 @@
       <bpmndi:BPMNEdge id="Flow_0odxv19_di" bpmnElement="Flow_0odxv19">
         <di:waypoint x="630" y="230" />
         <di:waypoint x="712" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bve4lf_di" bpmnElement="Flow_0bve4lf">
+        <di:waypoint x="430" y="143" />
+        <di:waypoint x="430" y="340" />
+        <di:waypoint x="530" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kjpbkl_di" bpmnElement="Flow_1kjpbkl">
+        <di:waypoint x="630" y="340" />
+        <di:waypoint x="712" y="340" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
